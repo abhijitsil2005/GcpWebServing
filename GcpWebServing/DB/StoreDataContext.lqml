@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database Name="onlinestore" EntityNamespace="OnlinestoreContext" ContextNamespace="OnlinestoreContext" Class="OnlineStoreDataContext" xmlns:ed="http://devart.com/schemas/EntityDeveloper/1.0" ed:Guid="5ea80003-6660-4f4b-955d-4b8a1f7853aa" Provider="Devart.Data.MySql.Linq.Provider.MySqlDataProvider, Devart.Data.MySql.Linq" Extended="true" xmlns="http://schemas.devart.com/linqconnect/mapping">
+  <Connection Mode="ConnectionString" ConnectionString="User Id=GProducts;Password=google;Host=35.185.59.98;Database=OnlineStore;Protocol=Ssl;Persist Security Info=True;SSL CA Cert=file://C:\WebApp\GcpWebServing\GcpWebServing\Cert\server-ca.pem;SSL Cert=file://C:\WebApp\GcpWebServing\GcpWebServing\Cert\client-cert.pem;SSL Key=file://C:\WebApp\GcpWebServing\GcpWebServing\Cert\client-key.pem" Provider="Devart.Data.MySql" />
+  <Table Name="OnlineStore.Cat_Product_Link" Member="CatProductLinks">
+    <Type Name="CatProductLink" ed:Guid="85395a97-efd5-4671-9640-9fc05ecd89e0">
+      <Column Name="Cat_Product_Link_Key" Member="CatProductLinkKey" Type="System.Int32" AutoSync="OnInsert" DbType="INT(11) NOT NULL AUTO_INCREMENT" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="383dd454-c838-4621-8b00-a826d4280746" />
+      <Column Name="ProductId" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" Precision="11" ed:ValidateRequired="false" ed:Guid="0a6ea613-715c-436d-b8a4-8a227efc29ac" />
+      <Column Name="CategoryKey" Type="System.Int32" DbType="INT(11) NULL" CanBeNull="true" UpdateCheck="Never" Precision="11" ed:ValidateRequired="false" ed:Guid="151f368e-842d-42eb-b113-860bb99c4efb" />
+      <Association Name="Category_CatProductLink" ed:AssociationGuid="f6c8a1d7-3354-42e2-ae28-18ce1a41ca7b" Member="Category" ed:Guid="6340c1d8-60dc-495d-9ffd-b74f190d6fa0" ThisKey="CategoryKey" OtherKey="CategoryKey" Type="Category" DeleteRule="NO ACTION" IsForeignKey="true" />
+      <Association Name="Product_CatProductLink" ed:AssociationGuid="25dea7a4-9147-474c-a561-4f09bfdce6da" Member="Product" ed:Guid="67fdc794-26db-49d8-b8c5-019c9ac22512" ThisKey="ProductId" OtherKey="Id" Type="Product" DeleteRule="NO ACTION" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="OnlineStore.Category" Member="Categories">
+    <Type Name="Category" ed:Guid="337a8bce-487b-48ea-8c32-ba8f2e23e76e">
+      <Column Name="categoryKey" Member="CategoryKey" Type="System.Int32" AutoSync="OnInsert" DbType="INT(11) NOT NULL AUTO_INCREMENT" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="a05395d6-2300-4319-9f49-eac1c04b376a" />
+      <Column Name="CategoryId" Type="System.String" DbType="VARCHAR(100) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="false" ed:Guid="d7af1b13-9625-44f5-ad54-e44ba4373120" />
+      <Column Name="CategoryName" Type="System.String" DbType="VARCHAR(250) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="250" Unicode="true" ed:ValidateMaxLength="250" ed:ValidateRequired="false" ed:Guid="f76a228d-7269-4410-bea9-a7ffd11b06cc" />
+      <Association Name="Category_CatProductLink" ed:AssociationGuid="f6c8a1d7-3354-42e2-ae28-18ce1a41ca7b" Member="CatProductLinks" ed:Guid="866bb694-942e-49ec-920a-f8c9728e04d2" ThisKey="CategoryKey" OtherKey="CategoryKey" Type="CatProductLink" />
+    </Type>
+  </Table>
+  <Table Name="OnlineStore.Products" Member="Products">
+    <Type Name="Product" ed:Guid="3cdfb913-d682-444e-acfc-98aa10252dc7">
+      <Column Name="Id" Type="System.Int32" AutoSync="OnInsert" DbType="INT(11) NOT NULL AUTO_INCREMENT" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Always" Precision="11" ed:ValidateRequired="true" ed:Guid="540f46f1-2474-4dd5-80f4-69a19f75ab82" />
+      <Column Name="sku" Member="Sku" Type="System.Int32" DbType="INT(11) NOT NULL" CanBeNull="false" UpdateCheck="Never" Precision="11" ed:ValidateRequired="true" ed:Guid="98de3ac2-b808-4472-9b06-771681827c8c" />
+      <Column Name="name" Member="Name" Type="System.String" DbType="VARCHAR(250) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="250" Unicode="true" ed:ValidateMaxLength="250" ed:ValidateRequired="false" ed:Guid="65d1e886-5dbc-4759-aff6-d56ba6b59599" />
+      <Column Name="type" Member="Type" Type="System.String" DbType="VARCHAR(100) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="false" ed:Guid="2b1b48c1-5630-4004-9464-f5bc47bc3416" />
+      <Column Name="price" Member="Price" Type="System.Decimal" DbType="DECIMAL(18,2) NULL" CanBeNull="true" UpdateCheck="Never" Precision="18" Scale="2" ed:ValidateRequired="false" ed:Guid="caecfacf-ae70-4fbb-af6b-480e6883a609" />
+      <Column Name="upc" Member="Upc" Type="System.String" DbType="VARCHAR(100) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="false" ed:Guid="45094b0f-ca1e-4422-a8b4-328096721416" />
+      <Column Name="shipping" Member="Shipping" Type="System.Decimal" DbType="DECIMAL(18,2) NULL" CanBeNull="true" UpdateCheck="Never" Precision="18" Scale="2" ed:ValidateRequired="false" ed:Guid="92acb228-efdf-452c-9591-dd78549222ea" />
+      <Column Name="description" Member="Description" Type="System.String" DbType="VARCHAR(600) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="600" Unicode="true" ed:ValidateMaxLength="600" ed:ValidateRequired="false" ed:Guid="64620db0-eaa5-466f-bb09-d60796da7cb5" />
+      <Column Name="manufacturer" Member="Manufacturer" Type="System.String" DbType="VARCHAR(250) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="250" Unicode="true" ed:ValidateMaxLength="250" ed:ValidateRequired="false" ed:Guid="6ad1bb4d-c938-44fc-8a8a-29c1b2db9a7f" />
+      <Column Name="model" Member="Model" Type="System.String" DbType="VARCHAR(250) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="250" Unicode="true" ed:ValidateMaxLength="250" ed:ValidateRequired="false" ed:Guid="7e0e1575-6df2-4ebd-ba8d-9cf93b812a7e" />
+      <Column Name="url" Member="Url" Type="System.String" DbType="VARCHAR(250) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="250" Unicode="true" ed:ValidateMaxLength="250" ed:ValidateRequired="false" ed:Guid="70bf7308-8825-4632-8091-616e73f679c2" />
+      <Column Name="image" Member="Image" Type="System.String" DbType="VARCHAR(250) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="250" Unicode="true" ed:ValidateMaxLength="250" ed:ValidateRequired="false" ed:Guid="884548e9-8930-41ef-a31c-dfdde0060ed2" />
+      <Column Name="StartsWith" Type="System.String" DbType="VARCHAR(1) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="1" Unicode="true" ed:ValidateMaxLength="1" ed:ValidateRequired="false" ed:Guid="18698554-0771-475f-93fa-c4cf4a099795" />
+      <Association Name="Product_CatProductLink" ed:AssociationGuid="25dea7a4-9147-474c-a561-4f09bfdce6da" Member="CatProductLinks" ed:Guid="ced56a13-e4d4-42d4-a020-f2a24ed3bf9d" ThisKey="Id" OtherKey="ProductId" Type="CatProductLink" />
+    </Type>
+  </Table>
+</Database>

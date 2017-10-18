@@ -1,0 +1,71 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@section scripts{
+    <script src="~/Scripts/App/GAutoCompleteApp.js" asp-append-version="true"></script>
+}
+
+<link rel="stylesheet" href="~/Content/angucomplete-alt.css" />
+
+<div id="gApp" ng-app="GAutoCompleteApp">
+    <div ng-controller="ngAutoCompleteController">
+        <div class="row">
+            <h1></h1>
+            <div class="col-xs-8">
+                <div angucomplete-alt id="txtAutocomplete" placeholder="Search Product" pause="100"
+                     selected-object="afterSelectedProduct" local-data="Products" search-fields="name" input-changed="inputChanged"
+                     title-field="name" minlength="1" input-class="form-control" match-class="highlight">
+                </div>
+            </div>
+        </div>
+        <br /><br />
+
+        <div ng-show="SelectedProduct">
+            @*Selected Product : {{SelectedProduct.name}}*@
+            <br /><br />
+
+            <div class="row">
+                <div class="col-xs-8">
+                    <div>
+                        <div>
+                            <h1>{{SelectedProduct.name}}</h1>
+                        </div>
+                        <div class="row">
+                            <ul>
+                                <li class="skumodel">
+                                    <span><b>Model:</b></span>
+                                    <span>{{SelectedProduct.model}}</span>
+                                </li>
+                                <li class="skumodel">
+                                    <span><b>SKU:</b></span>
+                                    <span>{{SelectedProduct.sku}}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <br />
+                    <div>
+                        <img alt="{{SelectedProduct.name}}" ng-src="{{SelectedProduct.image}}" draggable="false" />
+                    </div>
+                    <br /><br />
+                    <div>
+                        {{SelectedProduct.description}}
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="row">
+                        <div class="row">
+                            <h1>{{SelectedProduct.price | currency}}</h1>
+                        </div>
+                        <div class="row">
+                            <span class="shipping">Shipping:</span>
+                            <span class="shipping">{{SelectedProduct.shipping | currency}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
